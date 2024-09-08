@@ -61,7 +61,7 @@ function handleSearchSubmit(event) {
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   return days[date.getDay()];
 }
@@ -69,7 +69,7 @@ function formatDay(timestamp) {
 function getForecast(city) {
   let apiKey = "39ecbb8b3384t4f4a8ofef009e0c180a";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayForecast(response) {
@@ -90,7 +90,6 @@ function displayForecast(response) {
         <div class="weather-forecast-temperature">${Math.round(
           day.temperature.minimum
         )}°</div>
-      </div>
     </div>
   </div>
   `;
